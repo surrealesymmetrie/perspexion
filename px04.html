@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>PERSPEXION – Kapitel III</title>
+  <title>PERSPEXION – Kapitel IV</title>
 
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Cinzel&family=Cinzel+Decorative&family=Almendra+Display&display=swap" rel="stylesheet" />
@@ -33,7 +33,7 @@
 
     @media (max-width: 768px) {
       #bgImage {
-        content: url('px03.jpg');
+        content: url('px04.jpg');
         object-fit: contain;
         object-position: top center;
       }
@@ -125,12 +125,12 @@
 </head>
 <body>
 
-  <img src="px04.jpg" id="bgImage" alt="Hintergrundbild" />
+  <img src="px04h.jpg" id="bgImage" alt="Hintergrundbild" />
 
   <div class="container">
     <h1>PERSPEXION</h1>
     <h2>Chaos im Blut</h2>
-    <div class="divider">*~...III…~*</div>
+    <div class="divider">*~...IV…~*</div>
 
     <div id="nowPlaying">▶ vielleicht bin ich tot</div>
     <audio id="audio" controls controlsList="nodownload"></audio>
@@ -138,7 +138,7 @@
     <div id="playlist"></div>
 
     <br />
-    <button class="next-btn" onclick="window.location.href='px04.html'">*~...IV…~*</button>
+    <button class="next-btn" onclick="window.location.href='px05.html'">*~...V…~*</button>
   </div>
 
   <script>
@@ -146,7 +146,6 @@
       ["RYNN", "px04-1.mp3"],
       ["VALERIAN", "px04-2.mp3"],
       ["NAVEEN", "px04-3.mp3"]
-      ["NAVEEN 2", "px04-3b.mp3"]
     ];
 
     const audio = document.getElementById('audio');
@@ -180,8 +179,8 @@
     }
 
     audio.addEventListener('timeupdate', () => {
-      localStorage.setItem('perspexion03-track', current);
-      localStorage.setItem('perspexion03-time', audio.currentTime);
+      localStorage.setItem('perspexion04-track', current);
+      localStorage.setItem('perspexion04-time', audio.currentTime);
     });
 
     audio.addEventListener('ended', () => {
@@ -191,8 +190,8 @@
     });
 
     window.addEventListener('load', () => {
-      const savedTrack = localStorage.getItem('perspexion03-track');
-      const savedTime = localStorage.getItem('perspexion03-time');
+      const savedTrack = localStorage.getItem('perspexion04-track');
+      const savedTime = localStorage.getItem('perspexion04-time');
 
       if (savedTrack !== null) {
         current = parseInt(savedTrack);
