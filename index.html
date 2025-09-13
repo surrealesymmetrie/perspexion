@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>PERSPEXION – Chaos im Blut</title>
+  <title>PERSPEXION – Kapitel I</title>
 
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Cinzel&family=Cinzel+Decorative&family=Almendra+Display&display=swap" rel="stylesheet" />
@@ -20,24 +20,22 @@
       overflow: hidden;
     }
 
-    body::before {
-      content: "";
+    #bgImage {
       position: fixed;
       top: 0; left: 0;
-      width: 100%; height: 100%;
-      background-image: url('./px01h.jpg');
-      background-size: cover;
-      background-position: center;
-      background-repeat: no-repeat;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
       z-index: -1;
       opacity: 0.25;
+      pointer-events: none;
     }
 
     @media (max-width: 768px) {
-      body::before {
-        background-image: url('./px01.jpg');
-        background-size: contain;
-        background-position: top center;
+      #bgImage {
+        content: url('px01.jpg');
+        object-fit: contain;
+        object-position: top center;
       }
     }
 
@@ -127,6 +125,8 @@
 </head>
 <body>
 
+  <img src="px01h.jpg" id="bgImage" alt="Hintergrundbild" />
+
   <div class="container">
     <h1>PERSPEXION</h1>
     <h2>Chaos im Blut</h2>
@@ -178,24 +178,9 @@
       audio.play();
     }
 
-    function startPlayback() {
-      const savedTrack = localStorage.getItem('perspexion-index-track');
-      const savedTime = localStorage.getItem('perspexion-index-time');
-
-      if (savedTrack !== null) {
-        current = parseInt(savedTrack);
-        audio.src = tracks[current][1];
-        nowPlaying.textContent = "▶ " + tracks[current][0];
-        if (savedTime) audio.currentTime = parseFloat(savedTime);
-        audio.play();
-      } else {
-        playTrack(0);
-      }
-    }
-
     audio.addEventListener('timeupdate', () => {
-      localStorage.setItem('perspexion-index-track', current);
-      localStorage.setItem('perspexion-index-time', audio.currentTime);
+      localStorage.setItem('perspexion01-track', current);
+      localStorage.setItem('perspexion01-time', audio.currentTime);
     });
 
     audio.addEventListener('ended', () => {
@@ -205,8 +190,8 @@
     });
 
     window.addEventListener('load', () => {
-      const savedTrack = localStorage.getItem('perspexion-index-track');
-      const savedTime = localStorage.getItem('perspexion-index-time');
+      const savedTrack = localStorage.getItem('perspexion01-track');
+      const savedTime = localStorage.getItem('perspexion01-time');
 
       if (savedTrack !== null) {
         current = parseInt(savedTrack);
