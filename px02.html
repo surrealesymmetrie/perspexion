@@ -9,43 +9,34 @@
   <link href="https://fonts.googleapis.com/css2?family=Cinzel&family=Cinzel+Decorative&family=Almendra+Display&display=swap" rel="stylesheet" />
 
   <style>
-    html, body {
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
       margin: 0;
       padding: 0;
-      height: 100%;
+      min-height: 100vh;
       font-family: 'Almendra Display', serif;
       color: #eee;
       text-align: center;
       background-color: #000;
-      overflow: hidden;
     }
 
-    body::before {
-      content: "";
+    #bgImage {
       position: fixed;
       top: 0; left: 0;
-      width: 100%; height: 100%;
-      background-image: url('px02.jpg');
-      background-size: cover;
-      background-position: center;
-      background-repeat: no-repeat;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
       z-index: -1;
       opacity: 0.25;
-    }
-
-    @media (max-width: 768px) {
-      body::before {
-        background-size: contain;
-        background-position: top;
-      }
+      pointer-events: none;
     }
 
     .container {
-      position: relative;
-      top: 50%;
-      transform: translateY(-50%);
       max-width: 600px;
-      margin: 0 auto;
+      margin: 40px auto;
       padding: 20px;
       background-color: rgba(0, 0, 0, 0.6);
       border-radius: 12px;
@@ -64,6 +55,19 @@
       font-size: 1.5em;
       margin-bottom: 0.5em;
       color: #ffdde1;
+    }
+
+    .cover-block {
+      margin: 20px 0;
+    }
+
+    .cover-block img {
+      width: 80%;
+      max-width: 400px;
+      display: block;
+      margin: 0 auto;
+      border-radius: 8px;
+      box-shadow: 0 0 12px rgba(128, 0, 128, 0.4);
     }
 
     .divider {
@@ -126,9 +130,21 @@
 </head>
 <body>
 
+  <img 
+    src="px02h.jpg" 
+    srcset="px02.jpg 768w, px02h.jpg 1024w" 
+    sizes="(max-width: 768px) 100vw, 100vw" 
+    id="bgImage" 
+    alt="Hintergrundbild" />
+
   <div class="container">
     <h1>PERSPEXION</h1>
     <h2>Chaos im Blut</h2>
+
+    <div class="cover-block">
+      <img src="cover.jpg" alt="Coverbild" />
+    </div>
+
     <div class="divider">*~...II…~*</div>
 
     <div id="nowPlaying">▶ Calliope</div>
@@ -142,7 +158,7 @@
 
   <script>
     const tracks = [
-      ["RYNN", "px02-1.mp3"],
+      ["Calliope", "px02-1.mp3"],
       ["VALERIAN", "px02-2.mp3"],
       ["NAVEEN", "px02-3.mp3"]
     ];
@@ -177,21 +193,6 @@
       audio.play();
     }
 
-    function startPlayback() {
-      const savedTrack = localStorage.getItem('perspexion02-track');
-      const savedTime = localStorage.getItem('perspexion02-time');
-
-      if (savedTrack !== null) {
-        current = parseInt(savedTrack);
-        audio.src = tracks[current][1];
-        nowPlaying.textContent = "▶ " + tracks[current][0];
-        if (savedTime) audio.currentTime = parseFloat(savedTime);
-        audio.play();
-      } else {
-        playTrack(0);
-      }
-    }
-
     audio.addEventListener('timeupdate', () => {
       localStorage.setItem('perspexion02-track', current);
       localStorage.setItem('perspexion02-time', audio.currentTime);
@@ -221,5 +222,4 @@
   </script>
 
 </body>
-
 </html>
