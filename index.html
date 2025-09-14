@@ -9,15 +9,18 @@
   <link href="https://fonts.googleapis.com/css2?family=Cinzel&family=Cinzel+Decorative&family=Almendra+Display&display=swap" rel="stylesheet" />
 
   <style>
-    html, body {
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
       margin: 0;
       padding: 0;
-      height: 100%;
+      min-height: 100vh;
       font-family: 'Almendra Display', serif;
       color: #eee;
       text-align: center;
       background-color: #000;
-      overflow: hidden;
     }
 
     #bgImage {
@@ -40,11 +43,8 @@
     }
 
     .container {
-      position: relative;
-      top: 50%;
-      transform: translateY(-50%);
       max-width: 600px;
-      margin: 0 auto;
+      margin: 40px auto;
       padding: 20px;
       background-color: rgba(0, 0, 0, 0.6);
       border-radius: 12px;
