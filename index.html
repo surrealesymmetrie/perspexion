@@ -34,14 +34,6 @@
       pointer-events: none;
     }
 
-    @media (max-width: 768px) {
-      #bgImage {
-        content: url('px01.jpg');
-        object-fit: contain;
-        object-position: top center;
-      }
-    }
-
     .container {
       max-width: 600px;
       margin: 40px auto;
@@ -138,7 +130,12 @@
 </head>
 <body>
 
-  <img src="px01h.jpg" id="bgImage" alt="Hintergrundbild" />
+  <img 
+    src="px01h.jpg" 
+    srcset="px01.jpg 768w, px01h.jpg 1024w" 
+    sizes="(max-width: 768px) 100vw, 100vw" 
+    id="bgImage" 
+    alt="Hintergrundbild" />
 
   <div class="container">
     <h1>PERSPEXION</h1>
