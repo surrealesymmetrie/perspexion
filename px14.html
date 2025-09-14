@@ -9,15 +9,18 @@
   <link href="https://fonts.googleapis.com/css2?family=Cinzel&family=Cinzel+Decorative&family=Almendra+Display&display=swap" rel="stylesheet" />
 
   <style>
-    html, body {
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
       margin: 0;
       padding: 0;
-      height: 100%;
+      min-height: 100vh;
       font-family: 'Almendra Display', serif;
       color: #eee;
       text-align: center;
       background-color: #000;
-      overflow: hidden;
     }
 
     #bgImage {
@@ -31,20 +34,9 @@
       pointer-events: none;
     }
 
-    @media (max-width: 768px) {
-      #bgImage {
-        content: url('px14.jpg');
-        object-fit: contain;
-        object-position: top center;
-      }
-    }
-
     .container {
-      position: relative;
-      top: 50%;
-      transform: translateY(-50%);
       max-width: 600px;
-      margin: 0 auto;
+      margin: 40px auto;
       padding: 20px;
       background-color: rgba(0, 0, 0, 0.6);
       border-radius: 12px;
@@ -63,6 +55,19 @@
       font-size: 1.5em;
       margin-bottom: 0.5em;
       color: #ffdde1;
+    }
+
+    .cover-block {
+      margin: 20px 0;
+    }
+
+    .cover-block img {
+      width: 80%;
+      max-width: 400px;
+      display: block;
+      margin: 0 auto;
+      border-radius: 8px;
+      box-shadow: 0 0 12px rgba(128, 0, 128, 0.4);
     }
 
     .divider {
@@ -84,7 +89,7 @@
       margin-top: 20px;
     }
 
-    .next-btn, .fairy-btn {
+    .next-btn {
       font-family: 'Cinzel', serif;
       background-color: rgba(128, 0, 128, 0.7);
       color: #fff;
@@ -95,11 +100,9 @@
       cursor: pointer;
       box-shadow: 0 0 10px rgba(128, 0, 128, 0.4);
       transition: background 0.3s ease;
-      text-decoration: none;
-      display: inline-block;
     }
 
-    .next-btn:hover, .fairy-btn:hover {
+    .next-btn:hover {
       background-color: rgba(128, 0, 128, 0.85);
     }
 
@@ -134,21 +137,31 @@
 </head>
 <body>
 
-  <img src="px14h.jpg" id="bgImage" alt="Hintergrundbild" />
+  <img 
+    src="px14h.jpg" 
+    srcset="px14.jpg 768w, px14h.jpg 1024w" 
+    sizes="(max-width: 768px) 100vw, 100vw" 
+    id="bgImage" 
+    alt="Hintergrundbild" />
 
   <div class="container">
     <h1>PERSPEXION</h1>
     <h2>Chaos im Blut</h2>
+
+    <div class="cover-block">
+      <img src="cover.jpg" alt="Coverbild" />
+    </div>
+
     <div class="divider">*~...XIV…~*</div>
 
-    <div id="nowPlaying">▶ vielleicht bin ich tot</div>
+    <div id="nowPlaying">▶ bangen</div>
     <audio id="audio" controls controlsList="nodownload"></audio>
 
     <div id="playlist"></div>
 
     <div class="btn-group">
-      <a class="next-btn" href="px15.html">*~...XV…~*</a>
-      <a class="fairy-btn" href="https://surrealesymmetrie.github.io/FAIRYFALLS/" target="_blank">Aufenthalt in Fairy Falls verlängern</a>
+      <button class="next-btn" onclick="window.location.href='Outtakes.html'">OUTTAKES</button>
+      <button class="next-btn" onclick="window.location.href='https://surrealesymmetrie.github.io/FAIRYFALLS/'">Aufenthalt in Fairy Falls verlängern</button>
     </div>
   </div>
 
